@@ -1,0 +1,34 @@
+{
+    "name": "visol/idx-reader",
+    "description": "Read IDX file",
+    "keywords": ["idx-reader", "check", "validate"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fabien Udriot",
+            "email": "fabien.udriot@visol.ch"
+        }
+    ],
+    "require": {
+        "php": "^5.5.9|^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.6",
+        "sebastian/version": "^1.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Visol\\IdxReader\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Visol\\IdxReader\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.2-dev"
+        }
+    }
+}
