@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the visol/assert package.
+ * This file is part of the visol/idx-reader package.
  *
  * (c) Fabien Udriot <fabien.udriot@visol.ch>
  *
@@ -16,7 +16,7 @@ use Visol\IdxReader\Record;
 
 
 /**
- * @since  1.0
+ * Class RecordTest
  */
 class RecordTest extends TestCase
 {
@@ -47,7 +47,6 @@ class RecordTest extends TestCase
     {
         self::assertInstanceOf(Record::class, $this->fixture);
     }
-
 
     /**
      * @test
