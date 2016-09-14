@@ -90,6 +90,7 @@ class IdxReader
     protected function createRecord(array $fields, array $values)
     {
         $record = new Record();
+        $pictures = [];
         $index = 0;
         foreach ($fields as $givenField => $canonicalField) {
 
@@ -108,15 +109,49 @@ class IdxReader
                     throw new \RuntimeException($message, 1473867756);
                 }
             } else {
-                // handle picture case
+
+                if (preg_match('/([0-9])+_([\w]+)/', $canonicalField, $matches)) {
+                    $position = $matches[1];
+                    $fieldName = $matches[2];
+                    $pictures[$position][$fieldName] = $values[$index];
+                } else {
+                    throw new \RuntimeException('I could not parse the picture field ' . $canonicalField, 1473885239);
+                }
+
             }
 
             $index++;
         }
 
+        // Instantiate array of pictures.
+        $record->setPictures($this->createPictures($pictures));
+
+        // Just make sure our object is valid.
         $this->getRecordValidator()->validate($record);
 
         return $record;
+    }
+
+    /**
+     * @param array $pictures
+     * @return Picture[]
+     * @throws \RuntimeException
+     */
+    protected function createPictures(array $pictures)
+    {
+
+        $objects = [];
+        foreach ($pictures as $picture) {
+            if (!empty($picture['fileaname'])) {
+                $object = new Picture();
+                $object->setTitle($picture['title'])
+                    ->setDescription($picture['description'])
+                    ->setFilename($picture['filename'])
+                    ->setUrl($picture['url']);
+                $pictures[] = $object;
+            }
+        }
+        return $objects;
     }
 
     /**
