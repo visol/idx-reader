@@ -33,6 +33,11 @@ class IdxReader
     protected $mappings = [];
 
     /**
+     * @var array
+     */
+    protected $mandatoryFields = [];
+
+    /**
      * @param $identifier
      * @return $this
      */
@@ -108,6 +113,9 @@ class IdxReader
 
             $index++;
         }
+
+        $this->getRecordValidator()->validate($record);
+
         return $record;
     }
 
@@ -155,32 +163,25 @@ class IdxReader
     }
 
     /**
-     * @return array
+     * @return RecordValidator
      */
-    public function getMandatoryFields()
+    public function getRecordValidator()
     {
-        return [
-            'version',
-            'sender_id',
-            'object_category',
-            'object_type',
-            'offer_type',
-            'ref_property',
-            'ref_house',
-            'ref_object',
-            'object_street',
-            'object_zip',
-            'object_city',
-            'object_country',
-            'object_title',
-            'object_description',
-            'selling_price',
-            'rent_net',
-            'rent_extra',
-            'price_unit',
-            'currency',
-            'agency_id',
-        ];
+        $recordValidator = new RecordValidator();
+        if ($this->mandatoryFields) {
+            $recordValidator->setMandatoryFields($this->mandatoryFields);
+        }
+        return $recordValidator;
+    }
+
+    /**
+     * @param array $mandatoryFields
+     * @return $this
+     */
+    public function setMandatoryFields($mandatoryFields)
+    {
+        $this->mandatoryFields = $mandatoryFields;
+        return $this;
     }
 
 }

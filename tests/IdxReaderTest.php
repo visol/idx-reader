@@ -107,6 +107,24 @@ class IdxReaderTest extends TestCase
 
     /**
      * @test
+     */
+    public function canSetMappings()
+    {
+        $this->fixture->setMappings([]);
+        self::assertAttributeInternalType('array', 'mappings', $this->fixture);
+    }
+
+    /**
+     * @test
+     */
+    public function canSetMandatoryFields()
+    {
+        $this->fixture->setMandatoryFields([]);
+        self::assertAttributeInternalType('array', 'mandatoryFields', $this->fixture);
+    }
+
+    /**
+     * @test
      * @dataProvider propertyProvider
      * @param string $propertyName
      * @param string $type

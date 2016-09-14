@@ -39,14 +39,6 @@ class FieldConverter
         $this->fieldName = $fieldName;
     }
 
-//    /**
-//     * @return string
-//     */
-//    public function computeGetter()
-//    {
-//
-//    }
-
     /**
      * @return string
      */
