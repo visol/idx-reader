@@ -1,13 +1,13 @@
 Visol IDX Reader
 ===============
 
+[![Build Status](https://travis-ci.org/visol/idx-reader.svg?branch=1.1.0)](https://travis-ci.org/visol/idx-reader)
 
 Library to read IDX format.
 
-Latest release: [1.0.0](https://packagist.org/packages/visol/idx-reader#1.0.0)
+Latest release: [dev-master](https://packagist.org/packages/visol/idx-reader#dev-master)
 
 PHP >= 5.5.9
-
 
 Contribute
 ----------

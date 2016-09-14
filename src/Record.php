@@ -1254,15 +1254,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isView()
+    public function getView()
     {
         return $this->view;
     }
 
     /**
-     * @param boolean $view
+     * @param bool $view
      * @return $this
      */
     public function setView($view)
@@ -1272,15 +1272,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isFireplace()
+    public function getFireplace()
     {
         return $this->fireplace;
     }
 
     /**
-     * @param boolean $fireplace
+     * @param bool $fireplace
      * @return $this
      */
     public function setFireplace($fireplace)
@@ -1290,15 +1290,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isCabletv()
+    public function getCabletv()
     {
         return $this->cabletv;
     }
 
     /**
-     * @param boolean $cabletv
+     * @param bool $cabletv
      * @return $this
      */
     public function setCabletv($cabletv)
@@ -1308,15 +1308,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isElevator()
+    public function getElevator()
     {
         return $this->elevator;
     }
 
     /**
-     * @param boolean $elevator
+     * @param bool $elevator
      * @return $this
      */
     public function setElevator($elevator)
@@ -1326,15 +1326,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isChildFriendly()
+    public function getChildFriendly()
     {
         return $this->childFriendly;
     }
 
     /**
-     * @param boolean $childFriendly
+     * @param bool $childFriendly
      * @return $this
      */
     public function setChildFriendly($childFriendly)
@@ -1344,15 +1344,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isParking()
+    public function getParking()
     {
         return $this->parking;
     }
 
     /**
-     * @param boolean $parking
+     * @param bool $parking
      * @return $this
      */
     public function setParking($parking)
@@ -1362,15 +1362,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isGarage()
+    public function getGarage()
     {
         return $this->garage;
     }
 
     /**
-     * @param boolean $garage
+     * @param bool $garage
      * @return $this
      */
     public function setGarage($garage)
@@ -1380,15 +1380,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isBalcony()
+    public function getBalcony()
     {
         return $this->balcony;
     }
 
     /**
-     * @param boolean $balcony
+     * @param bool $balcony
      * @return $this
      */
     public function setBalcony($balcony)
@@ -1398,15 +1398,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isRoofFloor()
+    public function getRoofFloor()
     {
         return $this->roofFloor;
     }
 
     /**
-     * @param boolean $roofFloor
+     * @param bool $roofFloor
      * @return $this
      */
     public function setRoofFloor($roofFloor)
@@ -2100,15 +2100,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isIsdn()
+    public function getIsdn()
     {
         return $this->isdn;
     }
 
     /**
-     * @param boolean $isdn
+     * @param bool $isdn
      * @return $this
      */
     public function setIsdn($isdn)
@@ -2118,15 +2118,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isWheelchairAccessible()
+    public function getWheelchairAccessible()
     {
         return $this->wheelchairAccessible;
     }
 
     /**
-     * @param boolean $wheelchairAccessible
+     * @param bool $wheelchairAccessible
      * @return $this
      */
     public function setWheelchairAccessible($wheelchairAccessible)
@@ -2136,15 +2136,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isAnimalAllowed()
+    public function getAnimalAllowed()
     {
         return $this->animalAllowed;
     }
 
     /**
-     * @param boolean $animalAllowed
+     * @param bool $animalAllowed
      * @return $this
      */
     public function setAnimalAllowed($animalAllowed)
@@ -2154,15 +2154,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isRamp()
+    public function getRamp()
     {
         return $this->ramp;
     }
 
     /**
-     * @param boolean $ramp
+     * @param bool $ramp
      * @return $this
      */
     public function setRamp($ramp)
@@ -2172,15 +2172,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isLiftingPlatform()
+    public function getLiftingPlatform()
     {
         return $this->liftingPlatform;
     }
 
     /**
-     * @param boolean $liftingPlatform
+     * @param bool $liftingPlatform
      * @return $this
      */
     public function setLiftingPlatform($liftingPlatform)
@@ -2190,15 +2190,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isRailwayTerminal()
+    public function getRailwayTerminal()
     {
         return $this->railwayTerminal;
     }
 
     /**
-     * @param boolean $railwayTerminal
+     * @param bool $railwayTerminal
      * @return $this
      */
     public function setRailwayTerminal($railwayTerminal)
@@ -2208,15 +2208,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isRestrooms()
+    public function getRestrooms()
     {
         return $this->restrooms;
     }
 
     /**
-     * @param boolean $restrooms
+     * @param bool $restrooms
      * @return $this
      */
     public function setRestrooms($restrooms)
@@ -2226,15 +2226,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isWaterSupply()
+    public function getWaterSupply()
     {
         return $this->waterSupply;
     }
 
     /**
-     * @param boolean $waterSupply
+     * @param bool $waterSupply
      * @return $this
      */
     public function setWaterSupply($waterSupply)
@@ -2244,15 +2244,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isSewageSupply()
+    public function getSewageSupply()
     {
         return $this->sewageSupply;
     }
 
     /**
-     * @param boolean $sewageSupply
+     * @param bool $sewageSupply
      * @return $this
      */
     public function setSewageSupply($sewageSupply)
@@ -2262,15 +2262,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isPowerSupply()
+    public function getPowerSupply()
     {
         return $this->powerSupply;
     }
 
     /**
-     * @param boolean $powerSupply
+     * @param bool $powerSupply
      * @return $this
      */
     public function setPowerSupply($powerSupply)
@@ -2280,15 +2280,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isGasSupply()
+    public function getGasSupply()
     {
         return $this->gasSupply;
     }
 
     /**
-     * @param boolean $gasSupply
+     * @param bool $gasSupply
      * @return $this
      */
     public function setGasSupply($gasSupply)
@@ -2712,15 +2712,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isFlatSharingCommunity()
+    public function getFlatSharingCommunity()
     {
         return $this->flatSharingCommunity;
     }
 
     /**
-     * @param boolean $flatSharingCommunity
+     * @param bool $flatSharingCommunity
      * @return $this
      */
     public function setFlatSharingCommunity($flatSharingCommunity)
@@ -2730,15 +2730,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isCornerHouse()
+    public function getCornerHouse()
     {
         return $this->cornerHouse;
     }
 
     /**
-     * @param boolean $cornerHouse
+     * @param bool $cornerHouse
      * @return $this
      */
     public function setCornerHouse($cornerHouse)
@@ -2748,15 +2748,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isMiddleHouse()
+    public function getMiddleHouse()
     {
         return $this->middleHouse;
     }
 
     /**
-     * @param boolean $middleHouse
+     * @param bool $middleHouse
      * @return $this
      */
     public function setMiddleHouse($middleHouse)
@@ -2766,15 +2766,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isBuildingLandConnected()
+    public function getBuildingLandConnected()
     {
         return $this->buildingLandConnected;
     }
 
     /**
-     * @param boolean $buildingLandConnected
+     * @param bool $buildingLandConnected
      * @return $this
      */
     public function setBuildingLandConnected($buildingLandConnected)
@@ -2784,15 +2784,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isGardenhouse()
+    public function getGardenhouse()
     {
         return $this->gardenhouse;
     }
 
     /**
-     * @param boolean $gardenhouse
+     * @param bool $gardenhouse
      * @return $this
      */
     public function setGardenhouse($gardenhouse)
@@ -2802,15 +2802,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isRaisedGroundFloor()
+    public function getRaisedGroundFloor()
     {
         return $this->raisedGroundFloor;
     }
 
     /**
-     * @param boolean $raisedGroundFloor
+     * @param bool $raisedGroundFloor
      * @return $this
      */
     public function setRaisedGroundFloor($raisedGroundFloor)
@@ -2820,15 +2820,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isNewBuilding()
+    public function getNewBuilding()
     {
         return $this->newBuilding;
     }
 
     /**
-     * @param boolean $newBuilding
+     * @param bool $newBuilding
      * @return $this
      */
     public function setNewBuilding($newBuilding)
@@ -2838,15 +2838,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isOldBuilding()
+    public function getOldBuilding()
     {
         return $this->oldBuilding;
     }
 
     /**
-     * @param boolean $oldBuilding
+     * @param bool $oldBuilding
      * @return $this
      */
     public function setOldBuilding($oldBuilding)
@@ -2856,15 +2856,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isUnderBuildingLaws()
+    public function getUnderBuildingLaws()
     {
         return $this->underBuildingLaws;
     }
 
     /**
-     * @param boolean $underBuildingLaws
+     * @param bool $underBuildingLaws
      * @return $this
      */
     public function setUnderBuildingLaws($underBuildingLaws)
@@ -2874,15 +2874,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isUnderRoof()
+    public function getUnderRoof()
     {
         return $this->underRoof;
     }
 
     /**
-     * @param boolean $underRoof
+     * @param bool $underRoof
      * @return $this
      */
     public function setUnderRoof($underRoof)
@@ -2892,15 +2892,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isSwimmingpool()
+    public function getSwimmingpool()
     {
         return $this->swimmingpool;
     }
 
     /**
-     * @param boolean $swimmingpool
+     * @param bool $swimmingpool
      * @return $this
      */
     public function setSwimmingpool($swimmingpool)
@@ -2910,15 +2910,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isMinergieGeneral()
+    public function getMinergieGeneral()
     {
         return $this->minergieGeneral;
     }
 
     /**
-     * @param boolean $minergieGeneral
+     * @param bool $minergieGeneral
      * @return $this
      */
     public function setMinergieGeneral($minergieGeneral)
@@ -2928,15 +2928,15 @@ class Record
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isMinergieCertified()
+    public function getMinergieCertified()
     {
         return $this->minergieCertified;
     }
 
     /**
-     * @param boolean $minergieCertified
+     * @param bool $minergieCertified
      * @return $this
      */
     public function setMinergieCertified($minergieCertified)
