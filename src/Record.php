@@ -678,6 +678,20 @@ class Record
     protected $sparefield4 = '';
 
     /**
+     * @param mixed $value
+     * @return bool
+     */
+    protected function sanitizeBoolean($value) {
+
+        $sanitizedValue = $value;
+        if (is_string($value) && $value === 'N') {
+            $sanitizedValue = false;
+        }
+
+        return (bool)$sanitizedValue;
+    }
+
+    /**
      * @return string
      */
     public function getVersion()
@@ -1267,7 +1281,7 @@ class Record
      */
     public function setView($view)
     {
-        $this->view = $view;
+        $this->view = $this->sanitizeBoolean($view);
         return $this;
     }
 
@@ -1285,7 +1299,7 @@ class Record
      */
     public function setFireplace($fireplace)
     {
-        $this->fireplace = $fireplace;
+        $this->fireplace = $this->sanitizeBoolean($fireplace);
         return $this;
     }
 
@@ -1303,7 +1317,7 @@ class Record
      */
     public function setCabletv($cabletv)
     {
-        $this->cabletv = $cabletv;
+        $this->cabletv = $this->sanitizeBoolean($cabletv);
         return $this;
     }
 
@@ -1321,7 +1335,7 @@ class Record
      */
     public function setElevator($elevator)
     {
-        $this->elevator = $elevator;
+        $this->elevator = $this->sanitizeBoolean($elevator);
         return $this;
     }
 
@@ -1339,7 +1353,7 @@ class Record
      */
     public function setChildFriendly($childFriendly)
     {
-        $this->childFriendly = $childFriendly;
+        $this->childFriendly = $this->sanitizeBoolean($childFriendly);
         return $this;
     }
 
@@ -1357,7 +1371,7 @@ class Record
      */
     public function setParking($parking)
     {
-        $this->parking = $parking;
+        $this->parking = $this->sanitizeBoolean($parking);
         return $this;
     }
 
@@ -1375,7 +1389,7 @@ class Record
      */
     public function setGarage($garage)
     {
-        $this->garage = $garage;
+        $this->garage = $this->sanitizeBoolean($garage);
         return $this;
     }
 
@@ -1393,7 +1407,7 @@ class Record
      */
     public function setBalcony($balcony)
     {
-        $this->balcony = $balcony;
+        $this->balcony = $this->sanitizeBoolean($balcony);
         return $this;
     }
 
@@ -1411,7 +1425,7 @@ class Record
      */
     public function setRoofFloor($roofFloor)
     {
-        $this->roofFloor = $roofFloor;
+        $this->roofFloor = $this->sanitizeBoolean($roofFloor);
         return $this;
     }
 
@@ -2113,7 +2127,7 @@ class Record
      */
     public function setIsdn($isdn)
     {
-        $this->isdn = $isdn;
+        $this->isdn = $this->sanitizeBoolean($isdn);
         return $this;
     }
 
@@ -2131,7 +2145,7 @@ class Record
      */
     public function setWheelchairAccessible($wheelchairAccessible)
     {
-        $this->wheelchairAccessible = $wheelchairAccessible;
+        $this->wheelchairAccessible = $this->sanitizeBoolean($wheelchairAccessible);
         return $this;
     }
 
@@ -2149,7 +2163,7 @@ class Record
      */
     public function setAnimalAllowed($animalAllowed)
     {
-        $this->animalAllowed = $animalAllowed;
+        $this->animalAllowed = $this->sanitizeBoolean($animalAllowed);
         return $this;
     }
 
@@ -2167,7 +2181,7 @@ class Record
      */
     public function setRamp($ramp)
     {
-        $this->ramp = $ramp;
+        $this->ramp = $this->sanitizeBoolean($ramp);
         return $this;
     }
 
@@ -2185,7 +2199,7 @@ class Record
      */
     public function setLiftingPlatform($liftingPlatform)
     {
-        $this->liftingPlatform = $liftingPlatform;
+        $this->liftingPlatform = $this->sanitizeBoolean($liftingPlatform);
         return $this;
     }
 
@@ -2203,7 +2217,7 @@ class Record
      */
     public function setRailwayTerminal($railwayTerminal)
     {
-        $this->railwayTerminal = $railwayTerminal;
+        $this->railwayTerminal = $this->sanitizeBoolean($railwayTerminal);
         return $this;
     }
 
@@ -2221,7 +2235,7 @@ class Record
      */
     public function setRestrooms($restrooms)
     {
-        $this->restrooms = $restrooms;
+        $this->restrooms = $this->sanitizeBoolean($restrooms);
         return $this;
     }
 
@@ -2239,7 +2253,7 @@ class Record
      */
     public function setWaterSupply($waterSupply)
     {
-        $this->waterSupply = $waterSupply;
+        $this->waterSupply = $this->sanitizeBoolean($waterSupply);
         return $this;
     }
 
@@ -2257,7 +2271,7 @@ class Record
      */
     public function setSewageSupply($sewageSupply)
     {
-        $this->sewageSupply = $sewageSupply;
+        $this->sewageSupply = $this->sanitizeBoolean($sewageSupply);
         return $this;
     }
 
@@ -2275,7 +2289,7 @@ class Record
      */
     public function setPowerSupply($powerSupply)
     {
-        $this->powerSupply = $powerSupply;
+        $this->powerSupply = $this->sanitizeBoolean($powerSupply);
         return $this;
     }
 
@@ -2293,7 +2307,7 @@ class Record
      */
     public function setGasSupply($gasSupply)
     {
-        $this->gasSupply = $gasSupply;
+        $this->gasSupply = $this->sanitizeBoolean($gasSupply);
         return $this;
     }
 
@@ -2725,7 +2739,7 @@ class Record
      */
     public function setFlatSharingCommunity($flatSharingCommunity)
     {
-        $this->flatSharingCommunity = $flatSharingCommunity;
+        $this->flatSharingCommunity = $this->sanitizeBoolean($flatSharingCommunity);
         return $this;
     }
 
@@ -2743,7 +2757,7 @@ class Record
      */
     public function setCornerHouse($cornerHouse)
     {
-        $this->cornerHouse = $cornerHouse;
+        $this->cornerHouse = $this->sanitizeBoolean($cornerHouse);
         return $this;
     }
 
@@ -2761,7 +2775,7 @@ class Record
      */
     public function setMiddleHouse($middleHouse)
     {
-        $this->middleHouse = $middleHouse;
+        $this->middleHouse = $this->sanitizeBoolean($middleHouse);
         return $this;
     }
 
@@ -2779,7 +2793,7 @@ class Record
      */
     public function setBuildingLandConnected($buildingLandConnected)
     {
-        $this->buildingLandConnected = $buildingLandConnected;
+        $this->buildingLandConnected = $this->sanitizeBoolean($buildingLandConnected);
         return $this;
     }
 
@@ -2797,7 +2811,7 @@ class Record
      */
     public function setGardenhouse($gardenhouse)
     {
-        $this->gardenhouse = $gardenhouse;
+        $this->gardenhouse = $this->sanitizeBoolean($gardenhouse);
         return $this;
     }
 
@@ -2815,7 +2829,7 @@ class Record
      */
     public function setRaisedGroundFloor($raisedGroundFloor)
     {
-        $this->raisedGroundFloor = $raisedGroundFloor;
+        $this->raisedGroundFloor = $this->sanitizeBoolean($raisedGroundFloor);
         return $this;
     }
 
@@ -2833,7 +2847,7 @@ class Record
      */
     public function setNewBuilding($newBuilding)
     {
-        $this->newBuilding = $newBuilding;
+        $this->newBuilding = $this->sanitizeBoolean($newBuilding);
         return $this;
     }
 
@@ -2851,7 +2865,7 @@ class Record
      */
     public function setOldBuilding($oldBuilding)
     {
-        $this->oldBuilding = $oldBuilding;
+        $this->oldBuilding = $this->sanitizeBoolean($oldBuilding);
         return $this;
     }
 
@@ -2869,7 +2883,7 @@ class Record
      */
     public function setUnderBuildingLaws($underBuildingLaws)
     {
-        $this->underBuildingLaws = $underBuildingLaws;
+        $this->underBuildingLaws = $this->sanitizeBoolean($underBuildingLaws);
         return $this;
     }
 
@@ -2887,7 +2901,7 @@ class Record
      */
     public function setUnderRoof($underRoof)
     {
-        $this->underRoof = $underRoof;
+        $this->underRoof = $this->sanitizeBoolean($underRoof);
         return $this;
     }
 
@@ -2905,7 +2919,7 @@ class Record
      */
     public function setSwimmingpool($swimmingpool)
     {
-        $this->swimmingpool = $swimmingpool;
+        $this->swimmingpool = $this->sanitizeBoolean($swimmingpool);
         return $this;
     }
 
@@ -2923,7 +2937,7 @@ class Record
      */
     public function setMinergieGeneral($minergieGeneral)
     {
-        $this->minergieGeneral = $minergieGeneral;
+        $this->minergieGeneral = $this->sanitizeBoolean($minergieGeneral);
         return $this;
     }
 
@@ -2941,7 +2955,7 @@ class Record
      */
     public function setMinergieCertified($minergieCertified)
     {
-        $this->minergieCertified = $minergieCertified;
+        $this->minergieCertified = $this->sanitizeBoolean($minergieCertified);
         return $this;
     }
 

@@ -57,8 +57,87 @@ class RecordTest extends TestCase
     public function propertyType($propertyName, $type)
     {
         $getter = 'get' . ucfirst($propertyName);
-        $result = call_user_func(array($this->fixture, $getter));
+        $result = call_user_func([$this->fixture, $getter]);
         self::assertInternalType($type, $result);
+    }
+
+    /**
+     * @test
+     * @dataProvider propertyBooleanProvider
+     * @param string $propertyName
+     * @param string $type
+     */
+    public function canSetBooleanAttribute($propertyName, $type)
+    {
+
+        $setter = 'set' . ucfirst($propertyName);
+        $getter = 'get' . ucfirst($propertyName);
+
+        call_user_func_array([$this->fixture, $setter], ['N']);
+        $result = call_user_func([$this->fixture, $getter]);
+        self::assertFalse($result);
+
+        call_user_func_array([$this->fixture, $setter], [0]);
+        $result = call_user_func([$this->fixture, $getter]);
+        self::assertFalse($result);
+
+        call_user_func_array([$this->fixture, $setter], [false]);
+        $result = call_user_func([$this->fixture, $getter]);
+        self::assertFalse($result);
+
+        call_user_func_array([$this->fixture, $setter], ['Y']);
+        $result = call_user_func([$this->fixture, $getter]);
+        self::assertTrue($result);
+
+        call_user_func_array([$this->fixture, $setter], [1]);
+        $result = call_user_func([$this->fixture, $getter]);
+        self::assertTrue($result);
+
+        call_user_func_array([$this->fixture, $setter], [true]);
+        $result = call_user_func([$this->fixture, $getter]);
+        self::assertTrue($result);
+    }
+
+    /**
+     * Provider
+     */
+    public function propertyBooleanProvider()
+    {
+        return [
+            ['view', 'boolean',],
+            ['fireplace', 'boolean',],
+            ['cabletv', 'boolean',],
+            ['elevator', 'boolean',],
+            ['childFriendly', 'boolean',],
+            ['parking', 'boolean',],
+            ['garage', 'boolean',],
+            ['balcony', 'boolean',],
+            ['roofFloor', 'boolean',],
+            ['isdn', 'boolean',],
+            ['wheelchairAccessible', 'boolean',],
+            ['animalAllowed', 'boolean',],
+            ['ramp', 'boolean',],
+            ['liftingPlatform', 'boolean',],
+            ['railwayTerminal', 'boolean',],
+            ['restrooms', 'boolean',],
+            ['waterSupply', 'boolean',],
+            ['sewageSupply', 'boolean',],
+            ['powerSupply', 'boolean',],
+            ['gasSupply', 'boolean',],
+            ['flatSharingCommunity', 'boolean',],
+            ['cornerHouse', 'boolean',],
+            ['middleHouse', 'boolean',],
+            ['buildingLandConnected', 'boolean',],
+            ['gardenhouse', 'boolean',],
+            ['raisedGroundFloor', 'boolean',],
+            ['newBuilding', 'boolean',],
+            ['oldBuilding', 'boolean',],
+            ['underBuildingLaws', 'boolean',],
+            ['underRoof', 'boolean',],
+            ['swimmingpool', 'boolean',],
+            ['minergieGeneral', 'boolean',],
+            ['minergieCertified', 'boolean',],
+        ];
     }
 
     /**
