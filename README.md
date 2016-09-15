@@ -3,9 +3,7 @@ IDX Reader
 
 [![Build Status](https://travis-ci.org/visol/idx-reader.svg?branch=1.1.0)](https://travis-ci.org/visol/idx-reader)
 
-Library to read and parse IDX content
-
-Internet Data Exchange (IDX, also known as Information Data Exchange) is a standard to describe properties such as houses, appartment, etc... commonly used in the real estate industry.
+Library to read and parse IDX data. Internet Data Exchange (IDX, also known as Information Data Exchange) is a standard to describe properties such as houses, appartment, etc... commonly used in the real estate industry.
 
 Latest release: [dev-master](https://packagist.org/packages/visol/idx-reader#dev-master)
 
