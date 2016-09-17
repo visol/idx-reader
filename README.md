@@ -12,7 +12,6 @@ PHP >= 5.5.9
 Usage
 -----
 
-
     $contents = file_get_contents('sample.idx');
     $reader = new Visol\IdxReader\IdxReader();
     $reader->load($contents);
