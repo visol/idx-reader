@@ -55,6 +55,15 @@ Contributions to the package are always welcome!
 * Report any bugs or issues you find on the [issue tracker].
 * You can grab the source code at the package's [Git repository].
 
+Unit Tests
+----------
+
+To run the unit tests simply:
+
+```
+./phpunit tests
+```
+
 License
 -------
 
