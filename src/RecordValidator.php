@@ -13,6 +13,7 @@ namespace Visol\IdxReader;
 
 /**
  * Class RecordValidator
+ * @deprecated
  */
 class RecordValidator
 {

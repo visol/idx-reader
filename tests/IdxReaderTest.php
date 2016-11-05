@@ -53,37 +53,7 @@ class IdxReaderTest extends TestCase
     public function canLoadContentAndCountRecords()
     {
         $content = $this->getContent('sample.idx');
-        self::assertEquals(2, $this->fixture->load($content)->countRecords());
-    }
-
-    /**
-     * @test
-     */
-    public function canLoadContentWithMappingAndCountItems()
-    {
-        $content = $this->getContent('sampleWithMappingRequired.idx');
-        $this->fixture
-            ->setMappings([
-                'prop_view' => 'view',
-                'prop_fireplace' => 'fireplace',
-                'prop_cabletv' => 'cabletv',
-                'prop_elevator' => 'elevator',
-                'prop_child-friendly' => 'child_friendly',
-                'prop_parking' => 'parking',
-                'prop_garage' => 'garage',
-                'prop_balcony' => 'balcony',
-                'prop_roof_floor' => 'roof_floor',
-                'pic_3_filename' => 'picture_3_filename',
-                'billing_anrede' => 'billing_salutation',
-                'flat-sharing_community' => 'flat_sharing_community',
-                'building_landt_connected' => 'building_land_connected',
-                'sparfield_1' => 'sparefield_1',
-                'sparfield_2' => 'sparefield_2',
-                'sparfield_3' => 'sparefield_3',
-                'sparfield_4' => 'sparefield_4',
-            ])
-            ->load($content);
-        self::assertEquals(1, $this->fixture->countRecords());
+        self::assertEquals(4, $this->fixture->load($content)->countRecords());
     }
 
     /**
@@ -93,7 +63,7 @@ class IdxReaderTest extends TestCase
     {
         $sampleFileNameAndPath = __DIR__ . DIRECTORY_SEPARATOR . 'sample.idx';
         $this->fixture->loadFromFile($sampleFileNameAndPath);
-        self::assertEquals(2, $this->fixture->countRecords());
+        self::assertEquals(4, $this->fixture->countRecords());
     }
 
     /**
@@ -103,24 +73,6 @@ class IdxReaderTest extends TestCase
     public function loadNotExistingFileGenerateRuntimeException()
     {
         $this->fixture->loadFromFile('/foo/bar/baz.idx');
-    }
-
-    /**
-     * @test
-     */
-    public function canSetMappings()
-    {
-        $this->fixture->setMappings([]);
-        self::assertAttributeInternalType('array', 'mappings', $this->fixture);
-    }
-
-    /**
-     * @test
-     */
-    public function canSetMandatoryFields()
-    {
-        $this->fixture->setMandatoryFields([]);
-        self::assertAttributeInternalType('array', 'mandatoryFields', $this->fixture);
     }
 
     /**
@@ -147,10 +99,167 @@ class IdxReaderTest extends TestCase
     }
 
     /**
+     * @test
+     * @dataProvider propertyValueProvider
+     * @param string $propertyName
+     * @param string $type
+     */
+    public function propertyValue($propertyName, $type)
+    {
+        $content = $this->getContent('sample.idx');
+        $record = $this->fixture->load($content)->getFirst();
+
+        $getter = 'get' . ucfirst($propertyName);
+        $result = call_user_func(array($record, $getter));
+        self::assertEquals($type, $result);
+    }
+
+    /**
+     * Provider
+     */
+    public function propertyValueProvider()
+    {
+        return [
+            ['version', 'IDX3.01',],
+            ['senderId', 'OpenEstate.org',],
+            ['objectCategory', 'HOUSE',],
+            ['objectType', '5',],
+            ['offerType', 'SALE',],
+            ['refProperty', '41jkr',],
+            ['refHouse', 'TLcWD',],
+            ['refObject', '9VoHE',],
+            ['objectStreet', 'example street 124',],
+            ['objectZip', '12345',],
+            ['objectCity', 'Berlin',],
+            ['objectState', 'BE',],
+            ['objectCountry', 'DE',],
+            ['region', '',],
+            ['objectSituation', 'some description about the location',],
+            ['availableFrom', '25.02.2015',],
+            ['objectTitle', 'title of object',],
+            ['objectDescription', 'some description<br>about the object',],
+            ['sellingPrice', '678',],
+            ['rentNet', '804',],
+            ['rentExtra', '206',],
+            ['priceUnit', 'MONTHLY',],
+            ['currency', 'EUR',],
+            ['grossPremium', '4-5',],
+            ['floor', '8',],
+            ['numberOfRooms', '8.4',],
+            ['numberOfApartments', '7.2',],
+            ['surfaceLiving', '273',],
+            ['surfaceProperty', '701',],
+            ['surfaceUsable', '108',],
+            ['volume', '54',],
+            ['yearBuilt', '1904',],
+            ['view', '1',],
+            ['fireplace', '1',],
+            ['cabletv', '1',],
+            ['elevator', '1',],
+            ['childFriendly', '',],
+            ['parking', '',],
+            ['garage', '1',],
+            ['balcony', '1',],
+            ['roofFloor', '',],
+            ['distancePublicTransport', '1346',],
+            ['distanceShop', '2041',],
+            ['distanceKindergarten', '851',],
+            ['distanceSchool1', '4651',],
+            ['distanceSchool2', '1289',],
+            ['movieFilename', 'document.mp4',],
+            ['movieTitle', 'a document about the object',],
+            ['movieDescription', '',],
+            ['documentFilename', 'document.pdf',],
+            ['documentTitle', 'a document about the object',],
+            ['documentDescription', '',],
+            ['url', 'http://test.org/object/123',],
+            ['agencyId', '3C068',],
+            ['agencyName', 'agency name',],
+            ['agencyName2', 'additional agency name',],
+            ['agencyReference', 'yCmld',],
+            ['agencyStreet', 'example street 123',],
+            ['agencyZip', '12345',],
+            ['agencyCity', 'Berlin',],
+            ['agencyCountry', 'DE',],
+            ['agencyPhone', '030/123457',],
+            ['agencyMobile', '',],
+            ['agencyFax', '030/123456',],
+            ['agencyEmail', 'tester@test.org',],
+            ['agencyLogo', '',],
+            ['visitName', 'Max Mustermann',],
+            ['visitPhone', '030/123456',],
+            ['visitEmail', '',],
+            ['visitRemark', 'notes about the contact person',],
+            ['publishUntil', '',],
+            ['destination', '',],
+            ['distanceMotorway', '4220',],
+            ['ceilingHeight', '3.74',],
+            ['hallHeight', '9.82',],
+            ['maximalFloorLoading', '4783.1',],
+            ['carryingCapacityCrane', '1232.4',],
+            ['carryingCapacityElevator', '2960.2',],
+            ['isdn', '',],
+            ['wheelchairAccessible', '1',],
+            ['animalAllowed', '',],
+            ['ramp', '1',],
+            ['liftingPlatform', '1',],
+            ['railwayTerminal', '',],
+            ['restrooms', '1',],
+            ['waterSupply', '',],
+            ['sewageSupply', '',],
+            ['powerSupply', '',],
+            ['gasSupply', '',],
+            ['municipalInfo', '',],
+            ['ownObjectUrl', 'http://test.org/object/123',],
+            ['billingSalutation', '2',],
+            ['billingFirstName', 'Max',],
+            ['billingName', 'Mustermann',],
+            ['billingCompany', 'agency name',],
+            ['billingStreet', 'example street 123',],
+            ['billingPostBox', 'additional address notes',],
+            ['billingZip', '12345',],
+            ['billingPlaceName', 'Berlin',],
+            ['billingLand', 'Germany',],
+            ['billingPhone1', '030/123457',],
+            ['billingPhone2', '030/123458',],
+            ['billingMobile', '030/132456',],
+            ['billingLanguage', '1',],
+            ['publishingId', '',],
+            ['deliveryId', '',],
+            ['commissionSharing', '',],
+            ['commissionOwn', '',],
+            ['commissionPartner', '',],
+            ['agencyLogo2', '',],
+            ['numberOfFloors', '9',],
+            ['yearRenovated', '1998',],
+            ['flatSharingCommunity', '1',],
+            ['cornerHouse', '1',],
+            ['middleHouse', '',],
+            ['buildingLandConnected', '1',],
+            ['gardenhouse', '',],
+            ['raisedGroundFloor', '',],
+            ['newBuilding', '1',],
+            ['oldBuilding', '',],
+            ['underBuildingLaws', '',],
+            ['underRoof', '',],
+            ['swimmingpool', '1',],
+            ['minergieGeneral', '',],
+            ['minergieCertified', '1',],
+            ['lastModified', '25.02.2015 01:58:05',],
+            ['advertisementId', 'hxsaI',],
+            ['sparefield1', 'spare field 1',],
+            ['sparefield2', 'spare field 2',],
+            ['sparefield3', 'spare field 3',],
+            ['sparefield4', '',],
+        ];
+    }
+
+    /**
      * @param string $fileName
      * @return string
      */
-    private function getContent($fileName) {
+    private function getContent($fileName)
+    {
         $sampleFileNameAndPath = __DIR__ . DIRECTORY_SEPARATOR . $fileName;
         return file_get_contents($sampleFileNameAndPath);
     }

@@ -30,11 +30,6 @@ class IdxReader
     /**
      * @var array
      */
-    protected $mappings = [];
-
-    /**
-     * @var array
-     */
     protected $mandatoryFields = [];
 
     /**
@@ -56,19 +51,25 @@ class IdxReader
         $rows = explode("\n", $content);
 
         if (count($rows) > 1) {
-            $firstRow = array_shift($rows);
-            $fieldParser = new FieldParser($firstRow, $this->mappings);
+            $fieldParser = new FieldParser();
 
-            foreach ($rows as $row) {
+            foreach ($rows as $index => $row) {
 
-                $trimmedRow = trim($row); // just for security, trim the row.
+                $trimmedRow = $row;
+//                $trimmedRow = trim($row); // just for security, trim the row.
                 if ($trimmedRow) {
 
                     $values = IdxUtility::toValues($trimmedRow);
 
                     // Security check.
                     if ($fieldParser->getNumberOfFields() !== count($values)) {
-                        throw new \RuntimeException('Invalid entry! Number of fields does not correpond for identifier ' . $values[0], 1473864502);
+                        $message = sprintf(
+                            'Invalid entry! Number of fields (%s) does not corresponds %s for entry #%s',
+                            count($values),
+                            $fieldParser->getNumberOfFields(),
+                            $index
+                        );
+                        throw new \RuntimeException($message, 1473864502);
                     }
 
                     $record = $this->createRecord($fieldParser->getFields(), $values);
@@ -92,7 +93,7 @@ class IdxReader
         $record = new Record();
         $pictures = [];
         $index = 0;
-        foreach ($fields as $givenField => $canonicalField) {
+        foreach ($fields as $canonicalField) {
 
             if (strpos($canonicalField, 'picture') === false) {
                 $property = FieldConverter::forField($canonicalField)->toProperty();
@@ -104,7 +105,7 @@ class IdxReader
                 } else {
                     $message = sprintf(
                         'I can not set field name "%s". Try adding mapping [yourField => idxField]',
-                        $givenField
+                        $canonicalField
                     );
                     throw new \RuntimeException($message, 1473867756);
                 }
@@ -127,7 +128,7 @@ class IdxReader
         $record->setPictures($this->createPictures($pictures));
 
         // Just make sure our object is valid.
-        $this->getRecordValidator()->validate($record);
+        #$this->getRecordValidator()->validate($record);
 
         return $record;
     }
@@ -180,21 +181,19 @@ class IdxReader
     }
 
     /**
+     * @return Record
+     */
+    public function getFirst()
+    {
+        return $this->records[0];
+    }
+
+    /**
      * @return int
      */
     public function countRecords()
     {
         return count($this->getRecords());
-    }
-
-    /**
-     * @param array $mappings
-     * @return $this
-     */
-    public function setMappings($mappings)
-    {
-        $this->mappings = $mappings;
-        return $this;
     }
 
     /**

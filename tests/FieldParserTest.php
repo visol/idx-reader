@@ -37,31 +37,7 @@ class FieldParserTest extends TestCase
         $fieldParser = $this->getInstanceOfFieldParser();
 
         $fields = $fieldParser->getFields();
-        self::assertArrayHasKey('version', $fields);
-        self::assertArrayHasKey('sender_id', $fields);
-    }
-
-    /**
-     * @test
-     */
-    public function parseWithMappingsConvertField()
-    {
-
-        $fieldParser = $this->getInstanceOfFieldParser(['prop_view' => 'view']);
-
-        $fields = $fieldParser->getFields();
-        self::assertEquals('view', $fields['prop_view']);
-    }
-
-    /**
-     * @return string
-     */
-    private function getFirstRow() {
-        $sampleFileNameAndPath = __DIR__ . DIRECTORY_SEPARATOR . 'sampleWithMappingRequired.idx';
-        $content = file_get_contents($sampleFileNameAndPath);
-
-        $rows = explode("\n", $content);
-        return array_shift($rows);
+        self::assertCount(182, $fields);
     }
 
     /**
@@ -69,8 +45,7 @@ class FieldParserTest extends TestCase
      * @return FieldParser
      */
     private function getInstanceOfFieldParser(array $mapping = []) {
-        $firstRow = $this->getFirstRow();
-        return new FieldParser($firstRow, $mapping);
+        return new FieldParser();
     }
 
 }

@@ -23,14 +23,6 @@ We can also load a data-set from a file:
         ->getRecords();
 
 
-Additionally we can passe some settings such as mapping information in case the IDX fields differ from the original and a list of mandatory fields.
-
-    // Reconciliation of custom fields of mine with the IDX standard
-    $reader->setMappings['my_foo' => 'standard_idx_foo']
-
-    // overrides the default list of mandatory fields
-    $reader->setMandatoryFields(['version'])
-
 We can retrieve all records or count them:
 
     // Returns an array of records
