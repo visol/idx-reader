@@ -72,7 +72,7 @@ class IdxReader
                     }
 
                     $record = $this->createRecord($fieldParser->getFields(), $values);
-                    $this->records[$record->getVersion()] = $record;
+                    $this->records[] = $record;
                 }
 
             }

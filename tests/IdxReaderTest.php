@@ -53,7 +53,7 @@ class IdxReaderTest extends TestCase
     public function canLoadContentAndCountRecords()
     {
         $content = $this->getContent('sample.idx');
-        self::assertEquals(1, $this->fixture->load($content)->countRecords());
+        self::assertEquals(2, $this->fixture->load($content)->countRecords());
     }
 
     /**
@@ -93,7 +93,7 @@ class IdxReaderTest extends TestCase
     {
         $sampleFileNameAndPath = __DIR__ . DIRECTORY_SEPARATOR . 'sample.idx';
         $this->fixture->loadFromFile($sampleFileNameAndPath);
-        self::assertEquals(1, $this->fixture->countRecords());
+        self::assertEquals(2, $this->fixture->countRecords());
     }
 
     /**
