@@ -61,7 +61,8 @@ class IdxReader
 
                     $values = IdxUtility::toValues($trimmedRow);
 
-                    // Security check.
+                    // We stripped the spare fields here
+                    $values = array_slice($values, 0, 179);
                     if ($fieldParser->getNumberOfFields() !== count($values)) {
                         $message = sprintf(
                             'Invalid entry! Number of fields (%s) does not corresponds %s for entry #%s',

@@ -247,10 +247,10 @@ class IdxReaderTest extends TestCase
             ['minergieCertified', '1',],
             ['lastModified', '25.02.2015 01:58:05',],
             ['advertisementId', 'hxsaI',],
-            ['sparefield1', 'spare field 1',],
-            ['sparefield2', 'spare field 2',],
-            ['sparefield3', 'spare field 3',],
-            ['sparefield4', '',],
+//            ['sparefield1', 'spare field 1',],
+//            ['sparefield2', 'spare field 2',],
+//            ['sparefield3', 'spare field 3',],
+//            ['sparefield4', '',],
         ];
     }
 

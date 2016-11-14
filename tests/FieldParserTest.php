@@ -37,7 +37,7 @@ class FieldParserTest extends TestCase
         $fieldParser = $this->getInstanceOfFieldParser();
 
         $fields = $fieldParser->getFields();
-        self::assertCount(182, $fields);
+        self::assertCount(179, $fields);
     }
 
     /**

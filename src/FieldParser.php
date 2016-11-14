@@ -207,10 +207,10 @@ class FieldParser
             'minergie_certified',
             'last_modified',
             'advertisement_id',
-            'sparefield_1',
-            'sparefield_2',
-            'sparefield_3',
-            #'sparefield_4',
+//            'sparefield_1',
+//            'sparefield_2',
+//            'sparefield_3',
+//            'sparefield_4',
         ];
 
     }
