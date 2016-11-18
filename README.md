@@ -35,7 +35,7 @@ Complete example:
 
     $reader = new Visol\IdxReader\IdxReader()
     $reader->loadFromFile('sample.idx')
-        ->setMappings['my_foo' => 'standard_idx_foo']
+        ->forceUtf8()
         ->setMandatoryFields(['version'])
         ->getRecords();
 

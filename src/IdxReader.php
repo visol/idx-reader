@@ -28,11 +28,6 @@ class IdxReader
     protected $fields = [];
 
     /**
-     * @var array
-     */
-    protected $mandatoryFields = [];
-
-    /**
      * @param $identifier
      * @return $this
      */
@@ -55,29 +50,24 @@ class IdxReader
 
             foreach ($rows as $index => $row) {
 
-                $trimmedRow = $row;
-//                $trimmedRow = trim($row); // just for security, trim the row.
-                if ($trimmedRow) {
+                $values = IdxUtility::toValues($row);
 
-                    $values = IdxUtility::toValues($trimmedRow);
-
-                    // We stripped the spare fields here
-                    $values = array_slice($values, 0, 179);
-                    if ($fieldParser->getNumberOfFields() !== count($values)) {
-                        $message = sprintf(
-                            'Invalid entry! Number of fields (%s) does not corresponds %s for entry #%s',
-                            count($values),
-                            $fieldParser->getNumberOfFields(),
-                            $index
-                        );
-                        throw new \RuntimeException($message, 1473864502);
-                    }
-
-                    $record = $this->createRecord($fieldParser->getFields(), $values);
-                    $this->records[] = $record;
+                // We stripped the spare fields here
+                $values = array_slice($values, 0, 179);
+                if ($fieldParser->getNumberOfFields() !== count($values)) {
+                    $message = sprintf(
+                        'Invalid entry! Number of fields (%s) does not corresponds %s for entry #%s',
+                        count($values),
+                        $fieldParser->getNumberOfFields(),
+                        $index
+                    );
+                    throw new \RuntimeException($message, 1473864502);
                 }
 
+                $record = $this->createRecord($fieldParser->getFields(), $values);
+                $this->records[] = $record;
             }
+
         }
 
         return $this;
@@ -94,29 +84,22 @@ class IdxReader
         $record = new Record();
         $pictures = [];
         $index = 0;
-        foreach ($fields as $canonicalField) {
+        foreach ($fields as $field) {
 
-            if (strpos($canonicalField, 'picture') === false) {
-                $property = FieldConverter::forField($canonicalField)->toProperty();
+            if (strpos($field, 'picture') === false) {
+                $property = FieldConverter::forField($field)->toProperty();
                 $method = 'set' . $property;
                 $value = $values[$index];
 
-                if (method_exists($record, $method)) {
-                    call_user_func_array([$record, $method], [$value]);
-                } else {
-                    $message = sprintf(
-                        'I can not set field name "%s". Try adding mapping [yourField => idxField]',
-                        $canonicalField
-                    );
-                    throw new \RuntimeException($message, 1473867756);
-                }
+                call_user_func_array([$record, $method], [$value]);
             } else {
-                if (preg_match('/([0-9]+)+_([\w]+)/', $canonicalField, $matches)) {
+                // Case for pictures
+                if (preg_match('/([0-9]+)+_([\w]+)/', $field, $matches)) {
                     $position = $matches[1];
                     $fieldName = $matches[2];
                     $pictures[$position][$fieldName] = $values[$index];
                 } else {
-                    throw new \RuntimeException('I could not parse the picture field ' . $canonicalField, 1473885239);
+                    throw new \RuntimeException('I could not parse the picture field ' . $field, 1473885239);
                 }
 
             }
@@ -204,16 +187,6 @@ class IdxReader
     public function countRecords()
     {
         return count($this->getRecords());
-    }
-
-    /**
-     * @param array $mandatoryFields
-     * @return $this
-     */
-    public function setMandatoryFields($mandatoryFields)
-    {
-        $this->mandatoryFields = $mandatoryFields;
-        return $this;
     }
 
 }
