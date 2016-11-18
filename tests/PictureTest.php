@@ -14,7 +14,6 @@ namespace Visol\IdxReader\Tests;
 use PHPUnit\Framework\TestCase;
 use Visol\IdxReader\Picture;
 
-
 /**
  * Class PictureTest
  */

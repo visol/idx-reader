@@ -111,8 +111,7 @@ class IdxReader
                     throw new \RuntimeException($message, 1473867756);
                 }
             } else {
-
-                if (preg_match('/([0-9])+_([\w]+)/', $canonicalField, $matches)) {
+                if (preg_match('/([0-9]+)+_([\w]+)/', $canonicalField, $matches)) {
                     $position = $matches[1];
                     $fieldName = $matches[2];
                     $pictures[$position][$fieldName] = $values[$index];
@@ -138,16 +137,16 @@ class IdxReader
      */
     protected function createPictures(array $pictures)
     {
-
         $objects = [];
         foreach ($pictures as $picture) {
-            if (!empty($picture['fileaname'])) {
+            if (!empty($picture['filename'])) {
+
                 $object = new Picture();
                 $object->setTitle($picture['title'])
                     ->setDescription($picture['description'])
                     ->setFilename($picture['filename'])
                     ->setUrl($picture['url']);
-                $pictures[] = $object;
+                $objects[] = $object;
             }
         }
         return $objects;
@@ -184,6 +183,19 @@ class IdxReader
     public function getFirst()
     {
         return $this->records[0];
+    }
+
+    /**
+     * @param int $index
+     * @return Record|null
+     */
+    public function get($index)
+    {
+        $record = null;
+        if (!empty($this->records[$index])) {
+            $record = $this->records[$index];
+        }
+        return $record;
     }
 
     /**

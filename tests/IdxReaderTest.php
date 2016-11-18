@@ -50,10 +50,20 @@ class IdxReaderTest extends TestCase
     /**
      * @test
      */
+    public function loadFirstRecordAndCheckNumberOfPicturesIsEqualsToTwoInSample()
+    {
+        $content = $this->getContent('sample.idx');
+        $firstFixture = $this->fixture->load($content)->get(5);
+        self::assertCount(2, $firstFixture->getPictures());
+    }
+
+    /**
+     * @test
+     */
     public function canLoadContentAndCountRecords()
     {
         $content = $this->getContent('sample.idx');
-        self::assertEquals(4, $this->fixture->load($content)->countRecords());
+        self::assertEquals(6, $this->fixture->load($content)->countRecords());
     }
 
     /**
@@ -63,7 +73,7 @@ class IdxReaderTest extends TestCase
     {
         $sampleFileNameAndPath = __DIR__ . DIRECTORY_SEPARATOR . 'sample.idx';
         $this->fixture->loadFromFile($sampleFileNameAndPath);
-        self::assertEquals(4, $this->fixture->countRecords());
+        self::assertEquals(6, $this->fixture->countRecords());
     }
 
     /**
