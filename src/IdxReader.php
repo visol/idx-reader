@@ -128,9 +128,6 @@ class IdxReader
         // Instantiate array of pictures.
         $record->setPictures($this->createPictures($pictures));
 
-        // Just make sure our object is valid.
-        #$this->getRecordValidator()->validate($record);
-
         return $record;
     }
 
@@ -195,18 +192,6 @@ class IdxReader
     public function countRecords()
     {
         return count($this->getRecords());
-    }
-
-    /**
-     * @return RecordValidator
-     */
-    public function getRecordValidator()
-    {
-        $recordValidator = new RecordValidator();
-        if ($this->mandatoryFields) {
-            $recordValidator->setMandatoryFields($this->mandatoryFields);
-        }
-        return $recordValidator;
     }
 
     /**
