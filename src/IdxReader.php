@@ -28,6 +28,11 @@ class IdxReader
     protected $fields = [];
 
     /**
+     * @var bool
+     */
+    protected $forceUtf8 = false;
+
+    /**
      * @param $identifier
      * @return $this
      */
@@ -90,6 +95,10 @@ class IdxReader
                 $property = FieldConverter::forField($field)->toProperty();
                 $method = 'set' . $property;
                 $value = $values[$index];
+
+                if ($this->forceUtf8) {
+                    $value = utf8_encode($value);
+                }
 
                 call_user_func_array([$record, $method], [$value]);
             } else {
@@ -187,6 +196,15 @@ class IdxReader
     public function countRecords()
     {
         return count($this->getRecords());
+    }
+
+    /**
+     * @return $this
+     */
+    public function forceUtf8()
+    {
+        $this->forceUtf8 = true;
+        return $this;
     }
 
 }
