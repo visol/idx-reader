@@ -22,17 +22,15 @@ class IdxUtility
      *
      * @param string $row
      * @return array
-     * @throws \RuntimeException
      */
     static public function toValues($row)
     {
-
+        $values = []; // default is empty.
         $row = (string)$row;
-        if (!$row) {
-            throw new \RuntimeException('Mmm... empty row to convert to values... It should never be the case.', 1473870139);
+        if ($row) {
+            $values = explode('#', trim($row));
+            array_pop($values); # we remove the last items which is an empty value
         }
-        $values = explode('#', trim($row));
-        array_pop($values); # we remove the last items which is an empty value
         return $values;
     }
 

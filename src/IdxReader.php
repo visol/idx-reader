@@ -57,20 +57,22 @@ class IdxReader
 
                 $values = IdxUtility::toValues($row);
 
-                // We stripped the spare fields here
-                $values = array_slice($values, 0, 179);
-                if ($fieldParser->getNumberOfFields() !== count($values)) {
-                    $message = sprintf(
-                        'Invalid entry! Number of fields (%s) does not corresponds %s for entry #%s',
-                        count($values),
-                        $fieldParser->getNumberOfFields(),
-                        $index
-                    );
-                    throw new \RuntimeException($message, 1473864502);
-                }
+                if (!empty($values)) {
+                    // We stripped the spare fields here
+                    $values = array_slice($values, 0, 179);
+                    if ($fieldParser->getNumberOfFields() !== count($values)) {
+                        $message = sprintf(
+                            'Invalid entry! Number of fields (%s) does not corresponds %s for entry #%s',
+                            count($values),
+                            $fieldParser->getNumberOfFields(),
+                            $index
+                        );
+                        throw new \RuntimeException($message, 1473864502);
+                    }
 
-                $record = $this->createRecord($fieldParser->getFields(), $values);
-                $this->records[] = $record;
+                    $record = $this->createRecord($fieldParser->getFields(), $values);
+                    $this->records[] = $record;
+                }
             }
 
         }
