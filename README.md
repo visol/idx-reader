@@ -26,7 +26,7 @@ We can also load a data-set from a file:
 We can retrieve all records or count them:
 
     // Returns an array of records
-    $readere->getRecords();
+    $reader->getRecords();
 
     // Returns an integer
     $reader->countRecords();
@@ -34,9 +34,9 @@ We can retrieve all records or count them:
 Complete example:
 
     $reader = new Visol\IdxReader\IdxReader()
-    $reader->loadFromFile('sample.idx')
+    $reader
         ->forceUtf8()
-        ->setMandatoryFields(['version'])
+        ->loadFromFile('sample.idx')
         ->getRecords();
 
 Contribute
