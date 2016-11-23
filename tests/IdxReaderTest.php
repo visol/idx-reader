@@ -110,6 +110,35 @@ class IdxReaderTest extends TestCase
 
     /**
      * @test
+     * @dataProvider propertyDateTimeValueProvider
+     * @param string $propertyName
+     * @param string $type
+     */
+    public function propertyDateTimeValue($propertyName, $type)
+    {
+        $content = $this->getContent('sample.idx');
+        $record = $this->fixture->load($content)->getFirst();
+
+        $getter = 'get' . ucfirst($propertyName);
+
+        /** @var \DateTime $result */
+        $result = call_user_func(array($record, $getter));
+        self::assertEquals('DateTime', get_class($result));
+    }
+
+    /**
+     * Provider
+     */
+    public function propertyDateTimeValueProvider()
+    {
+        return [
+            ['availableFrom', '25.02.2015',],
+            ['lastModified', '25.02.2015 01:58:05',],
+        ];
+    }
+
+    /**
+     * @test
      * @dataProvider propertyValueProvider
      * @param string $propertyName
      * @param string $type
@@ -145,7 +174,6 @@ class IdxReaderTest extends TestCase
             ['objectCountry', 'DE',],
             ['region', '',],
             ['objectSituation', 'some description about the location',],
-            ['availableFrom', '25.02.2015',],
             ['objectTitle', 'title of object',],
             ['objectDescription', 'some description<br>about the object',],
             ['sellingPrice', '678',],
@@ -255,7 +283,6 @@ class IdxReaderTest extends TestCase
             ['swimmingpool', '1',],
             ['minergieGeneral', '',],
             ['minergieCertified', '1',],
-            ['lastModified', '25.02.2015 01:58:05',],
             ['advertisementId', 'hxsaI',],
 //            ['sparefield1', 'spare field 1',],
 //            ['sparefield2', 'spare field 2',],

@@ -975,7 +975,7 @@ class Record
      */
     public function setAvailableFrom($availableFrom)
     {
-        $this->availableFrom = $availableFrom;
+        $this->availableFrom = \DateTime::createFromFormat('d.m.Y', $availableFrom);
         return $this;
     }
 
@@ -2973,7 +2973,7 @@ class Record
      */
     public function setLastModified($lastModified)
     {
-        $this->lastModified = $lastModified;
+        $this->lastModified = \DateTime::createFromFormat('d.m.Y H:i:s', $lastModified);
         return $this;
     }
 
