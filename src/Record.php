@@ -975,7 +975,7 @@ class Record
      */
     public function setAvailableFrom($availableFrom)
     {
-        $this->availableFrom = \DateTime::createFromFormat('d.m.Y', $availableFrom);
+        $this->availableFrom = \DateTime::createFromFormat('d.m.Y', $availableFrom)->modify('midnight');
         return $this;
     }
 
