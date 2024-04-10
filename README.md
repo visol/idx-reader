@@ -1,13 +1,7 @@
 IDX Reader
 ==========
 
-[![Build Status](https://travis-ci.org/visol/idx-reader.svg?branch=1.1.0)](https://travis-ci.org/visol/idx-reader)
-
-Library to read and parse IDX data. Internet Data Exchange (IDX, also known as Information Data Exchange) is a standard to describe properties such as houses, appartment, etc... commonly used in the real estate industry.
-
-Latest release: [dev-master](https://packagist.org/packages/visol/idx-reader#dev-master)
-
-PHP >= 5.5.9
+Library to read and parse IDX data. Internet Data Exchange (IDX) is a standard to describe properties such as houses, appartment, etc... commonly used in the real estate industry.
 
 Usage
 -----
@@ -16,12 +10,10 @@ Usage
     $reader = new Visol\IdxReader\IdxReader();
     $reader->load($contents);
 
-We can also load a data-set from a file:
+We can also load a dataset from a file:
 
     $reader = new Visol\IdxReader\IdxReader()
-    $reader->loadFromFile('sample.idx')
-        ->getRecords();
-
+    $reader->loadFromFile('sample.idx');
 
 We can retrieve all records or count them:
 
