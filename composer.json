@@ -2,6 +2,7 @@
     "name": "visol/idx-reader",
     "type": "library",
     "description": "Read IDX reader - Internet Data Exchange is a standard to describe properties such as houses, appartment, etc... commonly used in the real estate industry.",
+    "version": "2.0.0",
     "keywords": ["idx-reader", "real estate"],
     "license": "MIT",
     "authors": [
@@ -24,11 +25,6 @@
     "autoload-dev": {
         "psr-4": {
             "Visol\\IdxReader\\Tests\\": "tests/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.2-dev"
         }
     }
 }
