@@ -50,7 +50,7 @@ class IdxReader
     {
         $rows = explode("\n", $content);
 
-        if (count($rows) > 1) {
+        if (count($rows) > 0) {
             $fieldParser = new FieldParser();
 
             foreach ($rows as $index => $row) {
