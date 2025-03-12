@@ -3,6 +3,10 @@ IDX Reader
 
 Library to read and parse IDX data. Internet Data Exchange (IDX) is a standard to describe properties such as houses, appartment, etc... commonly used in the real estate industry.
 
+https://en.wikipedia.org/wiki/Internet_Data_Exchange
+
+See [FieldParser.php](./src/FieldParser.php) for the implemented field names and [idx-format-v3.01-description.xlsx](./Documentation/idx-format-v3.01-description.xlsx) for a detailed description of the IDX 3.01 standard.
+
 Usage
 -----
 
